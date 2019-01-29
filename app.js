@@ -4,6 +4,7 @@ express 			= require("express"),
 app 				= express();
 
 app.set("view engine","ejs");
+app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/",function(req,res){
@@ -12,7 +13,7 @@ app.get("/",function(req,res){
 
 app.post("/recommendations/",function(req,res){
 	console.log(req.body);
-	res.render("index");
+	res.redirect("/");
 });
 
 app.listen(3000,function(){
